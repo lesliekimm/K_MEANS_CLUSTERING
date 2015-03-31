@@ -1,0 +1,53 @@
+IREADME — K-MEANS ALGORITHM
+COSC150 Project 1
+Author: Leslie Kim
+NetID: LK584
+
+CONTENTS:
+This directory contains an executable jar file, a zip file, two sample data
+files and README file.
+The jar file is an executable file to run the KMeans Algorithm.
+The zip file contains all java and class files for each class for the Means
+Algorithm, a JUnit test for the project and a sample data file.
+Data1.txt is a sample data file of ordered pairs.
+Data2.txt is a sample data file of ordered triplets.
+
+DESCRIPTION:
+The main is run in the KMeansClustering class. It creates an object that
+runs the K-Means Clustering algorithm. To run the program, one or three
+command line arguments should be passed in. The first command line argument
+is a filename that contains rectangular coordinates as data points. The
+file should be in the same directory as the Project files. (Optional: The
+second and third command line arguments are the number of Clusters (K) and
+iterations the algorithm will have and run. If these arguments are not
+entered, by default, there will be K = 3 Clusters and 5 iterations.)
+i.e. java -jar LK584.jar Data1.txt - This will use Data1.txt as the data file
+                                     and set K = 3 and run 5 iterations.
+i.e. java -jar LK584.jar Data1.txt 6 3 - This will use Data1.txt as the data
+					 file and set K = 6 and run 3
+					 iterations.
+NOTE: Data1.txt should be the full pathname of the textile.
+
+Each java file contains a detailed description of the class and its
+constructor(s) and methods.
+
+The program reads in a file of rectangular coordinates as Point objects
+and stores them in a PointList object. K Points are selected at random and
+a Cluster object is instantiated with each random Point as it's centroid.
+Each Point from the file is assigned to a Cluster by calculating the distance
+from each centroid and assigning it to the Cluster with the closest centroid.
+For each Cluster, the intra-cluster distance is calculated between all sets of
+two Points. The largest distance measures the quality of that particular 
+Cluster and is assigned to the maxIntraDistance of that Cluster. The
+overallMaxIntraDistance is used to assess the quality of the entire algorithm
+by taking the largest maxIntraDistance among all Clusters. The mean of each
+Cluster is calculated and Clusters are created with the new centroids. Each
+Point is then re-assigned to the Cluster with the closest centroid. This
+process repeats for the number of iterations specified or until convergence
+occurs (an iteration produces the same Clusters as the previous iteration).
+
+EXTRA CREDIT:
+1) If convergence occurs, program automatically ends and outputs diagnostics.
+2) Algorithm should run for both ordered pairs and ordered triplets. All data
+   points in a file must be the same type of Point (either an order pair or
+   ordered triplet).
